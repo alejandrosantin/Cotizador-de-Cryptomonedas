@@ -43,26 +43,26 @@ function selectCriptomonedas(criptomonedas) {
     // Conocer el tiempo de ejecucion
     let inicio = performance.now();
 
-    criptomonedas.forEach(cripto => {
-        const { FullName, Name } = cripto.CoinInfo;
-        const option = document.createElement('option');
-        option.value = Name;
-        option.textContent = FullName;
-        // insertar el HTML
-        criptomonedasSelect.appendChild(option);
-    });
+    // criptomonedas.forEach(cripto => {
+    //     const { FullName, Name } = cripto.CoinInfo;
+    //     const option = document.createElement('option');
+    //     option.value = Name;
+    //     option.textContent = FullName;
+    //     // insertar el HTML
+    //     criptomonedasSelect.appendChild(option);
+    // });
 
-    /**
-     
-     *    for(let i = 0; i < criptomonedas.length; i++) {
+
+    //el for es un poco mas rapido que el forEach
+    for (let i = 0; i < criptomonedas.length; i++) {
         const { FullName, Name } = criptomonedas[i].CoinInfo;
         const option = document.createElement('option');
         option.value = Name;
         option.textContent = FullName;
-        // insertar el HTML
+        //insertar el HTML
         criptomonedasSelect.appendChild(option);
     }
-     */
+
 
     const fin = performance.now();
     console.log(fin - inicio);
@@ -84,8 +84,7 @@ function submitFormulario(e) {
         return;
     }
 
-    // nuevo:
-    debugger;
+    //debugger;
 
     consultarAPI();
 }
@@ -111,7 +110,7 @@ function mostrarAlerta(mensaje) {
 
 function consultarAPI() {
 
-    // NUEVO
+    // Conocer el performance
     const inicio = performance.now();
     const {  moneda, criptomoneda } = objBusqueda;
 
@@ -134,11 +133,10 @@ function mostrarCotizacionHTML(cotizacion) {
 
     limpiarHTML();
 
-    console.log(cotizacion);
     const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE  } = cotizacion;
 
 
-    debugger;
+    //debugger;
 
     const precio = document.createElement('p');
     precio.classList.add('precio');
@@ -156,7 +154,7 @@ function mostrarCotizacionHTML(cotizacion) {
     const ultimaActualizacion = document.createElement('p');
     ultimaActualizacion.innerHTML = `<p>Última Actualización: <span>${LASTUPDATE}</span></p>`;
 
-    debugger;
+    //debugger;
 
     resultado.appendChild(precio);
     resultado.appendChild(precioAlto);
